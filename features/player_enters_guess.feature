@@ -1,10 +1,10 @@
-@wip
 Feature: Player enters guess
 
 As a player
 I want to enter a guesss
 So I can break the code
 
+@wip
 Scenario: Player enters four numbers
 Given the game has been started
 When the player enters a string of four digits
