@@ -14,7 +14,9 @@ class TestStartGame(TestCase):
 
     def test_displays_welcome_message(self):
         self.sut.start()
-        expect(self.console.output).to(contain('Welcome to Code Breaker'))
+        expect(
+            self.console.stdout.getvalue()).to(
+                contain('Welcome to Code Breaker'))
 
 
 if '__main__' == __name__:
