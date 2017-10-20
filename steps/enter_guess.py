@@ -26,7 +26,7 @@ def step_impl(context):
 def step_impl(context):
     # Verify standard output contains the expected text
     expected = re.compile('^[0\-\+]{4}$')
-    actual = context.console.stdout.getvalue()
+    actual = context.console.stdout.readline()
     matched = expected.match(actual)
     assert matched, '"%s" did not match the expected pattern' % actual
 

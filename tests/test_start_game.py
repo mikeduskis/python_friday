@@ -15,7 +15,7 @@ class TestStartGame(TestCase):
     def test_displays_welcome_message(self):
         self.sut.start()
         expect(
-            self.console.stdout.getvalue()).to(
+            self.console.stdout.readline()).to(
                 contain('Welcome to Code Breaker'))
 
 

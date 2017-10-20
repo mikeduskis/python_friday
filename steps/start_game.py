@@ -22,5 +22,5 @@ def step_impl(context):
 
 @then(u'the game displays "Welcome to Code Breaker"')  # noqa: F811
 def step_impl(context):
-    actual = context.fake_console.stdout.getvalue()
+    actual = context.fake_console.stdout.readline()
     expect(actual).to(contain('Welcome to Code Breaker'))

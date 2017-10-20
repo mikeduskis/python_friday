@@ -17,12 +17,13 @@ class TestEnterGuess(TestCase):
     def test_returns_4_valid_chars_on_enter_guess(self):
         # Enter a guess
         self.console.stdin.write('1234\n')
-        expect(self.console.stdout.getvalue()).to(
+        expect(self.console.stdout.readline()).to(
             match('^[0\+\-]{4}$'))
 
     """
     Test runs forever because of a deadlock at line 14.
-    Next step: Place the game in a separate thread so we can interact with it live.
+    Next step: Place the game in a separate thread so we can interact with it
+    live.
     """
 
 
