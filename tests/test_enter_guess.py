@@ -1,3 +1,4 @@
+from threading import Thread
 from unittest import TestCase, main
 
 from expects import expect, match
@@ -11,8 +12,10 @@ class TestEnterGuess(TestCase):
     def setUp(self):
         self.console = FakeConsole()
         self.sut = Codebreaker(console=self.console)
-        self.sut.start()
-        self.console.reset()
+        game_thread = Thread(target=self.sut.start, daemon=True)
+        game_thread.start()
+        # Read "Welcome to Codebreaker"
+        self.console.stdout.readline()
 
     def test_returns_4_valid_chars_on_enter_guess(self):
         # Enter a guess

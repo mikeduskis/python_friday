@@ -1,3 +1,5 @@
+from threading import Thread
+
 from behave import given, when, then
 from expects import expect, contain
 
@@ -17,9 +19,10 @@ def step_impl(context):
     # When the user types this text, the module gets loaded
     context.fake_console = FakeConsole()
     context.game = Codebreaker(console=context.fake_console)
-    context.game.start()
+    context.game_thread = Thread(target=context.game.start, daemon=True)
+    context.game_thread.start()
 
-
+    
 @then(u'the game displays "Welcome to Code Breaker"')  # noqa: F811
 def step_impl(context):
     actual = context.fake_console.stdout.readline()

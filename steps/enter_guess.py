@@ -1,5 +1,6 @@
 from io import StringIO
 import re
+from threading import Thread
 
 from behave import given, when, then
 
@@ -12,8 +13,9 @@ def step_impl(context):
     # Instantiate the game
     context.console = FakeConsole()
     context.game = Codebreaker(console=context.console)
+    context.game_thread = Thread(target=context.game.start, daemon=True)
     # Start the game
-    context.game.start()
+    context.game_thread.start()
     # Reset standard output
     context.console.stdout = StringIO()
 
