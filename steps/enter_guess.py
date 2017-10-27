@@ -16,13 +16,12 @@ def step_impl(context):
     context.game_thread = Thread(target=context.game.start, daemon=True)
     # Start the game
     context.game_thread.start()
-    # Reset standard output
-    context.console.stdout = StringIO()
+    context.console.stdout.readline()
 
 
 @when(u'the player enters a string of four digits')  # noqa: F811
 def step_impl(context):
-    context.console.stdin = StringIO(initial_value='1234\n')
+    context.console.stdin.write('1234\n')
 
 @then(u'the game displays exactly four zeros, plusses and/or minuses')  # noqa
 def step_impl(context):
