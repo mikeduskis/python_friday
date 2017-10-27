@@ -1,4 +1,3 @@
-from io import StringIO
 import re
 from threading import Thread
 
