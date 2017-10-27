@@ -23,12 +23,6 @@ class TestEnterGuess(TestCase):
         expect(self.console.stdout.readline()).to(
             match('^[0\+\-]{4}$'))
 
-    """
-    Test runs forever because of a deadlock at line 14.
-    Next step: Place the game in a separate thread so we can interact with it
-    live.
-    """
-
 
 if '__main__' == __name__:
     main()
